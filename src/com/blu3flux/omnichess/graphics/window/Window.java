@@ -3,7 +3,6 @@ package com.blu3flux.omnichess.graphics.window;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import com.blu3flux.omnichess.graphics.theme.DefaultTheme;
