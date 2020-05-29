@@ -15,11 +15,11 @@ public class Window extends JFrame {
 	private PlayPanel playPanel;
 	private AnalysisPanel analysisPanel;
 	private ThemePanel themePanel;
-	private ThemeManager themeMan;
 	
 	public Window(int width, int height, String title, DefaultTheme theme) {
 		// Theme Manager
-		themeMan = new ThemeManager(theme);
+		ThemeManager themeMan = ThemeManager.getInstance();
+		themeMan.setTheme(theme);
 		
 		// Tab panel configurations
 		playPanel = new PlayPanel();

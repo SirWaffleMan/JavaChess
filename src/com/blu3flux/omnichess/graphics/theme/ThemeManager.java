@@ -2,11 +2,23 @@ package com.blu3flux.omnichess.graphics.theme;
 
 import java.awt.Color;
 
+// Singleton
 public class ThemeManager {
+	
+	private static ThemeManager instance;
 	private Color primaryColor;
 	private Color secondaryColor;
 	
-	public ThemeManager(DefaultTheme theme) {
+	private ThemeManager() {}
+	
+	public static ThemeManager getInstance() {
+		if(instance == null) {
+			instance = new ThemeManager();
+		}
+		return instance;
+	}
+	
+	public void setTheme(DefaultTheme theme) {
 		switch(theme) {
 		case LIGHT_THEME:
 			primaryColor = Color.WHITE;
