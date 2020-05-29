@@ -14,6 +14,10 @@ public class ChessBoard extends JPanel{
 	
 	public ChessBoard() {}
 	
+	public void setFEN(String fen) {
+		
+	}
+	
 	protected void paintComponent(Graphics g) {
 		
 		// Draw background
@@ -34,8 +38,5 @@ public class ChessBoard extends JPanel{
 				g.fillRect(x, y, squareSize, squareSize);
 			}
 		}
-		
-		
-		
 	}
 }
