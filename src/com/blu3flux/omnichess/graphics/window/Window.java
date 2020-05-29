@@ -1,4 +1,4 @@
-package com.blu3flux.omnichess.graphics;
+package com.blu3flux.omnichess.graphics.window;
 
 import java.awt.Dimension;
 
@@ -13,9 +13,9 @@ public class Window extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane tabPanel;
-	private JPanel playPanel;
-	private JPanel analysisPanel;
-	private JPanel themePanel;
+	private PlayPanel playPanel;
+	private AnalysisPanel analysisPanel;
+	private ThemePanel themePanel;
 	private ThemeManager themeMan;
 	
 	public Window(int width, int height, String title, DefaultTheme theme) {
@@ -23,9 +23,9 @@ public class Window extends JFrame {
 		themeMan = new ThemeManager(theme);
 		
 		// Tab panel configurations
-		playPanel = new JPanel();
-		analysisPanel = new JPanel();
-		themePanel = new JPanel();
+		playPanel = new PlayPanel();
+		analysisPanel = new AnalysisPanel();
+		themePanel = new ThemePanel();
 		
 		tabPanel = new JTabbedPane();
 		tabPanel.addTab("Play", playPanel);

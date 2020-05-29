@@ -1,7 +1,7 @@
 package com.blu3flux.omnichess;
 
-import com.blu3flux.omnichess.graphics.Window;
 import com.blu3flux.omnichess.graphics.theme.DefaultTheme;
+import com.blu3flux.omnichess.graphics.window.Window;
 
 public class OmniChessApplication {
 	
