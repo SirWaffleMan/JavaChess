@@ -1,6 +1,8 @@
 package com.blu3flux.omnichess.graphics.window;
 
 import java.awt.Dimension;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
@@ -8,7 +10,7 @@ import javax.swing.JTabbedPane;
 import com.blu3flux.omnichess.graphics.theme.DefaultTheme;
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
 
-public class Window extends JFrame{
+public class Window extends JFrame implements ComponentListener{
 
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane tabPanel;
@@ -41,6 +43,36 @@ public class Window extends JFrame{
 		setContentPane(tabPanel);
 		pack();
 		setVisible(true);
+		addComponentListener(this);
+	}
+	
+	private void resizeComponents() {
+		//playPanel.resizeComponents();
+		analysisPanel.resizeComponents(getWidth(), getHeight());
+	}
+
+	@Override
+	public void componentResized(ComponentEvent e) {
+		System.out.println("Resized: " + getWidth() + " " + getHeight());
+		resizeComponents();
+	}
+
+	@Override
+	public void componentMoved(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void componentShown(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void componentHidden(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
