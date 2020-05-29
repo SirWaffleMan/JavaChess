@@ -8,7 +8,7 @@ import javax.swing.JTabbedPane;
 import com.blu3flux.omnichess.graphics.theme.DefaultTheme;
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
 
-public class Window extends JFrame {
+public class Window extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane tabPanel;

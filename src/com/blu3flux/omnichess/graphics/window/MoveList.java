@@ -18,6 +18,6 @@ public class MoveList extends JPanel{
 		g.fillRect(0, 0, getWidth(), getHeight());
 		
 		g.setColor(Color.WHITE);
-		g.drawString("1. e4 e5", 0, 0);
+		g.drawString("1. e4 e5", 0, 30);
 	}
 }

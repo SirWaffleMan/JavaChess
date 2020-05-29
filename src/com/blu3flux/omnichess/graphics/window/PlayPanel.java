@@ -1,5 +1,7 @@
 package com.blu3flux.omnichess.graphics.window;
 
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 
 public class PlayPanel extends JPanel{
@@ -9,7 +11,10 @@ public class PlayPanel extends JPanel{
 	private ChessBoard chessBoard;
 	
 	public PlayPanel() {
-		chessBoard = new ChessBoard(600);
+		chessBoard = new ChessBoard();
+		
+		chessBoard.setPreferredSize(new Dimension(600, 600));
+		
 		add(chessBoard);
 	}
 

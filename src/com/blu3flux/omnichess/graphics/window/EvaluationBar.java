@@ -24,7 +24,6 @@ public class EvaluationBar extends JPanel{
 		
 		g.setColor(Color.BLACK);
 		g.drawString(String.valueOf(evaluation), 0, getHeight());
-		
 	}
 	
 	public void setEvaluation(double eval) {

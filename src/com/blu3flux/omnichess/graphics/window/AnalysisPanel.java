@@ -1,6 +1,8 @@
 package com.blu3flux.omnichess.graphics.window;
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 
@@ -19,6 +21,10 @@ public class AnalysisPanel extends JPanel{
 	private MoveList moveList;
 	
 	public AnalysisPanel() {
+		
+		setLayout(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.HORIZONTAL;
 		
 		leftPanel = new JPanel();
 		centerPanel = new JPanel();
@@ -40,9 +46,14 @@ public class AnalysisPanel extends JPanel{
 		chessBoard.setPreferredSize(new Dimension(600, 600));
 		moveList.setPreferredSize(new Dimension(300, 600));
 
-		add(leftPanel);
-		add(centerPanel);
-		add(rightPanel);
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		add(leftPanel, gbc);
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		add(centerPanel, gbc);
+		gbc.gridx = 2;
+		gbc.gridy = 0;
+		add(rightPanel, gbc);
 	}
-
 }
