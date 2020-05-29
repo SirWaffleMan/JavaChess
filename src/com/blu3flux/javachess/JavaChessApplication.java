@@ -1,6 +1,7 @@
 package com.blu3flux.javachess;
 
 import com.blu3flux.javachess.graphics.Window;
+import com.blu3flux.javachess.graphics.theme.DefaultTheme;
 
 public class JavaChessApplication {
 	
@@ -8,8 +9,9 @@ public class JavaChessApplication {
 	private int HEIGHT = 720;
 	private String TITLE = "JavaChess";
 	private Window window;
+	private DefaultTheme THEME = DefaultTheme.DARK_THEME;
 	
 	public JavaChessApplication() {
-		window = new Window(WIDTH, HEIGHT, TITLE);
+		window = new Window(WIDTH, HEIGHT, TITLE, THEME);
 	}
 }
