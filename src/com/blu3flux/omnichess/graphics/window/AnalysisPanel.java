@@ -4,6 +4,8 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
+import com.blu3flux.omnichess.graphics.theme.ThemeManager;
+
 public class AnalysisPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
@@ -21,6 +23,10 @@ public class AnalysisPanel extends JPanel{
 		leftPanel = new JPanel();
 		centerPanel = new JPanel();
 		rightPanel = new JPanel();
+		
+		leftPanel.setBackground(ThemeManager.getInstance().getSecondaryColor());
+		centerPanel.setBackground(ThemeManager.getInstance().getSecondaryColor());
+		rightPanel.setBackground(ThemeManager.getInstance().getSecondaryColor());
 		
 		evalBar = new EvaluationBar();
 		chessBoard = new ChessBoard(600);

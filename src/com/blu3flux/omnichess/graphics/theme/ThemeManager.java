@@ -26,7 +26,7 @@ public class ThemeManager {
 			break;
 		case DARK_THEME:
 			primaryColor = Color.DARK_GRAY;
-			secondaryColor = Color.LIGHT_GRAY;
+			secondaryColor = new Color(40, 40, 40);
 			break;
 		default:
 			primaryColor = Color.WHITE;
