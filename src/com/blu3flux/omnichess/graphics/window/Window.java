@@ -45,16 +45,10 @@ public class Window extends JFrame implements ComponentListener{
 		setVisible(true);
 		addComponentListener(this);
 	}
-	
-	private void resizeComponents() {
-		//playPanel.resizeComponents();
-		analysisPanel.resizeComponents(getWidth(), getHeight());
-	}
 
 	@Override
 	public void componentResized(ComponentEvent e) {
-		System.out.println("Resized: " + getWidth() + " " + getHeight());
-		resizeComponents();
+		analysisPanel.resizeComponents(getWidth(), getHeight());
 	}
 
 	@Override
