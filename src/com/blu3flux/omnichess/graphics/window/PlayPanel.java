@@ -6,11 +6,11 @@ public class PlayPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
-	private ChessBoard chessPanel;
+	private ChessBoard chessBoard;
 	
 	public PlayPanel() {
-		chessPanel = new ChessBoard(600);
-		add(chessPanel);
+		chessBoard = new ChessBoard(600);
+		add(chessBoard);
 	}
 
 }
