@@ -10,7 +10,6 @@ import javax.swing.JTabbedPane;
 public class Window extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel mainPanel;
 	private JTabbedPane tabPanel;
 	private JPanel playPanel;
 	private JPanel analysisPanel;
