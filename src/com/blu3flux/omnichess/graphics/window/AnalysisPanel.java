@@ -9,11 +9,11 @@ public class AnalysisPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	private EvaluationBar evalBar;
-	private ChessboardPanel chessPanel;
+	private ChessBoard chessPanel;
 	
 	public AnalysisPanel() {
 		evalBar = new EvaluationBar();
-		chessPanel = new ChessboardPanel(600);
+		chessPanel = new ChessBoard(600);
 		
 		evalBar.setPreferredSize(new Dimension(40, 600));
 		

@@ -8,11 +8,11 @@ import javax.swing.JPanel;
 
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
 
-public class ChessboardPanel extends JPanel{
+public class ChessBoard extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
-	public ChessboardPanel(int size) {
+	public ChessBoard(int size) {
 		setPreferredSize(new Dimension(size, size));
 	}
 	
