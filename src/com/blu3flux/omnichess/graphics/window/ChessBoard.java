@@ -37,6 +37,5 @@ public class ChessBoard extends JPanel{
 		
 		
 		
-		
 	}
 }
