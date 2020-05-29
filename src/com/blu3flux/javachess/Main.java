@@ -1,4 +1,4 @@
-package com.blu3flux;
+package com.blu3flux.javachess;
 
 public class Main {
 
