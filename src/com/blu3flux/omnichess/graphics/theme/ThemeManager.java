@@ -1,4 +1,4 @@
-package com.blu3flux.javachess.graphics.theme;
+package com.blu3flux.omnichess.graphics.theme;
 
 import java.awt.Color;
 

@@ -1,4 +1,4 @@
-package com.blu3flux.javachess.graphics;
+package com.blu3flux.omnichess.graphics;
 
 import java.awt.Dimension;
 
@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import com.blu3flux.javachess.graphics.theme.DefaultTheme;
-import com.blu3flux.javachess.graphics.theme.ThemeManager;
+import com.blu3flux.omnichess.graphics.theme.DefaultTheme;
+import com.blu3flux.omnichess.graphics.theme.ThemeManager;
 
 public class Window extends JFrame {
 

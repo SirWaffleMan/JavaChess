@@ -1,4 +1,4 @@
-package com.blu3flux.javachess.chess;
+package com.blu3flux.omnichess.chess;
 
 public class Knight extends Piece {
 
