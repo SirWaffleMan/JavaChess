@@ -12,9 +12,7 @@ public class ChessBoard extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
-	public ChessBoard(int size) {
-		setPreferredSize(new Dimension(size, size));
-	}
+	public ChessBoard() {}
 	
 	protected void paintComponent(Graphics g) {
 		

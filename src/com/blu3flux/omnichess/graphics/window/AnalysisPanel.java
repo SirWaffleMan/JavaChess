@@ -29,7 +29,7 @@ public class AnalysisPanel extends JPanel{
 		rightPanel.setBackground(ThemeManager.getInstance().getSecondaryColor());
 		
 		evalBar = new EvaluationBar();
-		chessBoard = new ChessBoard(600);
+		chessBoard = new ChessBoard();
 		moveList = new MoveList();
 		
 		leftPanel.add(evalBar);
@@ -37,6 +37,7 @@ public class AnalysisPanel extends JPanel{
 		rightPanel.add(moveList);
 		
 		evalBar.setPreferredSize(new Dimension(40, 600));
+		chessBoard.setPreferredSize(new Dimension(600, 600));
 		moveList.setPreferredSize(new Dimension(300, 600));
 
 		add(leftPanel);
