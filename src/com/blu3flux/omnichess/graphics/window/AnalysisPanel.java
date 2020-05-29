@@ -19,7 +19,7 @@ public class AnalysisPanel extends JPanel{
 	
 	private EvaluationBar evalBar;
 	private ChessBoard chessBoard;
-	private MoveList moveList;
+	private AnalysisExplorer analysisExplorer;
 	
 	public AnalysisPanel() {
 		
@@ -38,15 +38,15 @@ public class AnalysisPanel extends JPanel{
 		
 		evalBar = new EvaluationBar();
 		chessBoard = new ChessBoard();
-		moveList = new MoveList();
+		analysisExplorer = new AnalysisExplorer();
 		
 		leftPanel.add(evalBar);
 		centerPanel.add(chessBoard);
-		rightPanel.add(moveList);
+		rightPanel.add(analysisExplorer);
 		
 		evalBar.setPreferredSize(new Dimension(40, 600));
 		chessBoard.setPreferredSize(new Dimension(600, 600));
-		moveList.setPreferredSize(new Dimension(300, 600));
+		analysisExplorer.setPreferredSize(new Dimension(300, 600));
 
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -60,27 +60,35 @@ public class AnalysisPanel extends JPanel{
 	}
 
 	public void resizeComponents(int width, int height) {
-		
-		if(width >= 1300) {
+
+		if(width >= 1300 && width >= 920) {
 			chessBoard.setPreferredSize(new Dimension(800, 800));
 			evalBar.setPreferredSize(new Dimension(40, 800));
-			moveList.setPreferredSize(new Dimension(300, 800));
+			analysisExplorer.setPreferredSize(new Dimension(300, 800));
 		}else if(width >= 1200) {
 			chessBoard.setPreferredSize(new Dimension(600, 600));
 			evalBar.setPreferredSize(new Dimension(40, 600));
-			moveList.setPreferredSize(new Dimension(300, 600));
+			analysisExplorer.setPreferredSize(new Dimension(300, 600));
 		}else if(width >= 1000) {
 			chessBoard.setPreferredSize(new Dimension(400, 400));
 			evalBar.setPreferredSize(new Dimension(40, 400));
-			moveList.setPreferredSize(new Dimension(300, 400));
+			analysisExplorer.setPreferredSize(new Dimension(300, 400));
 		}else {
 			chessBoard.setPreferredSize(new Dimension(200, 200));
 			evalBar.setPreferredSize(new Dimension(40, 200));
-			moveList.setPreferredSize(new Dimension(300, 200));
+			analysisExplorer.setPreferredSize(new Dimension(300, 200));
 		}
+		
+		evalBar.invalidate();
+		evalBar.validate();
+		evalBar.repaint();
 	
-		invalidate();
-		validate();
-		repaint();
+		chessBoard.invalidate();
+		chessBoard.validate();
+		chessBoard.repaint();
+		
+		analysisExplorer.invalidate();
+		analysisExplorer.validate();
+		analysisExplorer.repaint();
 	}
 }

@@ -48,6 +48,7 @@ public class Window extends JFrame implements ComponentListener{
 
 	@Override
 	public void componentResized(ComponentEvent e) {
+		playPanel.resizeComponents(getWidth(), getHeight());
 		analysisPanel.resizeComponents(getWidth(), getHeight());
 	}
 
