@@ -33,7 +33,7 @@ public class Window extends JFrame implements ComponentListener{
 		tabPanel.addTab("Play", playPanel);
 		tabPanel.addTab("Analysis", analysisPanel);
 		tabPanel.addTab("Theme", themePanel);
-		tabPanel.setForeground(Color.WHITE);
+		tabPanel.setForeground(themeMan.getFontColor());
 		tabPanel.setBackground(themeMan.getPrimaryColor());
 		for (int i = 0; i < tabPanel.getTabCount(); i++) {
 			tabPanel.getComponentAt(i).setBackground(themeMan.getSecondaryColor());
