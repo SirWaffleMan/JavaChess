@@ -8,6 +8,7 @@ public class ThemeManager {
 	private static ThemeManager instance;
 	private Color primaryColor;
 	private Color secondaryColor;
+	private Color fontColor;
 	
 	private ThemeManager() {}
 	
@@ -23,14 +24,17 @@ public class ThemeManager {
 		case LIGHT_THEME:
 			primaryColor = Color.WHITE;
 			secondaryColor = Color.LIGHT_GRAY;
+			fontColor = Color.BLACK;
 			break;
 		case DARK_THEME:
 			primaryColor = Color.DARK_GRAY;
 			secondaryColor = new Color(40, 40, 40);
+			fontColor = Color.WHITE;
 			break;
 		default:
 			primaryColor = Color.WHITE;
 			secondaryColor = Color.LIGHT_GRAY;
+			fontColor = Color.BLACK;
 			break;
 		}
 	}
@@ -41,5 +45,9 @@ public class ThemeManager {
 	
 	public Color getSecondaryColor() {
 		return secondaryColor;
+	}
+	
+	public Color getFontColor() {
+		return fontColor;
 	}
 }

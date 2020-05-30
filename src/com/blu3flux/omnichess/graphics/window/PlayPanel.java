@@ -59,16 +59,16 @@ public void resizeComponents(int width, int height) {
 		
 		if(width >= 1300 && width >= 920) {
 			chessBoard.setPreferredSize(new Dimension(800, 800));
-			moveList.setPreferredSize(new Dimension(300, 800));
+			moveList.setSize(new Dimension(300, 800));
 		}else if(width >= 1200) {
 			chessBoard.setPreferredSize(new Dimension(600, 600));
-			moveList.setPreferredSize(new Dimension(300, 600));
+			moveList.setSize(new Dimension(300, 600));
 		}else if(width >= 1000) {
 			chessBoard.setPreferredSize(new Dimension(400, 400));
-			moveList.setPreferredSize(new Dimension(300, 400));
+			moveList.setSize(new Dimension(300, 400));
 		}else {
 			chessBoard.setPreferredSize(new Dimension(200, 200));
-			moveList.setPreferredSize(new Dimension(300, 200));
+			moveList.setSize(new Dimension(300, 200));
 		}
 	
 		chessBoard.invalidate();
