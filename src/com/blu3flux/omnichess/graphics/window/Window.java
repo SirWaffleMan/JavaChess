@@ -1,6 +1,5 @@
 package com.blu3flux.omnichess.graphics.window;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -17,7 +16,7 @@ public class Window extends JFrame implements ComponentListener{
 	private JTabbedPane tabPanel;
 	private PlayPanel playPanel;
 	private AnalysisPanel analysisPanel;
-	private ThemePanel themePanel;
+	private OptionPanel optionPanel;
 	
 	public Window(int width, int height, String title, DefaultTheme theme) {
 		// Theme Manager
@@ -27,12 +26,12 @@ public class Window extends JFrame implements ComponentListener{
 		// Tab panel configurations
 		playPanel = new PlayPanel();
 		analysisPanel = new AnalysisPanel();
-		themePanel = new ThemePanel();
+		optionPanel = new OptionPanel();
 		
 		tabPanel = new JTabbedPane();
 		tabPanel.addTab("Play", playPanel);
 		tabPanel.addTab("Analysis", analysisPanel);
-		tabPanel.addTab("Theme", themePanel);
+		tabPanel.addTab("Options", optionPanel);
 		tabPanel.setForeground(themeMan.getFontColor());
 		tabPanel.setBackground(themeMan.getPrimaryColor());
 		for (int i = 0; i < tabPanel.getTabCount(); i++) {
