@@ -18,9 +18,6 @@ public class AssetManager {
 	
 	public void loadAssets() {
 		loadChessSets();
-		for(ChessSet set : chessSets) {
-			System.out.println(set.name);
-		}
 	}
 	
 	private void loadChessSets() {
@@ -68,6 +65,6 @@ public class AssetManager {
 	}
 	
 	public ChessSet getSelectedChessSet() {
-		return null;
+		return chessSets.get(0);
 	}
 }

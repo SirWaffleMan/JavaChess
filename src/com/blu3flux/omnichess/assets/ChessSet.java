@@ -30,4 +30,42 @@ public class ChessSet {
 		this.bQueen = q;
 		this.bKing = k;
 	}
+	
+	public byte[] getWPawnBytes() {
+		return wPawn;
+	}
+	public byte[] getWKnightBytes() {
+		return wKnight;
+	}
+	public byte[] getWBishopBytes() {
+		return wBishop;
+	}
+	public byte[] getWRookBytes() {
+		return wRook;
+	}
+	public byte[] getWQueenBytes() {
+		return wQueen;
+	}
+	public byte[] getWKingBytes() {
+		return wKing;
+	}
+	
+	public byte[] getBPawnBytes() {
+		return bPawn;
+	}
+	public byte[] getBKnightBytes() {
+		return bKnight;
+	}
+	public byte[] getBBishopBytes() {
+		return bBishop;
+	}
+	public byte[] getBRookBytes() {
+		return bRook;
+	}
+	public byte[] getBQueenBytes() {
+		return bQueen;
+	}
+	public byte[] getBKingBytes() {
+		return bKing;
+	}
 }
