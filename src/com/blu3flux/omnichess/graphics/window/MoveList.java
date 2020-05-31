@@ -24,6 +24,7 @@ public class MoveList extends JPanel{
 		        }; 
 		table = new JTable(data, columnNames);
 		table.setEnabled(false);
+		table.setRowHeight(30);
 		table.setForeground(ThemeManager.getInstance().getFontColor());
 		table.setBackground(ThemeManager.getInstance().getPrimaryColor());
 		
