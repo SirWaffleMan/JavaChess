@@ -3,7 +3,7 @@ package com.blu3flux.omnichess.controls;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class MouseControl extends MouseAdapter{
+public class ChessMouseControl extends MouseAdapter{
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
