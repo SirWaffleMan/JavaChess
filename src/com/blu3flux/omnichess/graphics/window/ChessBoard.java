@@ -2,7 +2,6 @@ package com.blu3flux.omnichess.graphics.window;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
@@ -11,6 +10,13 @@ import javax.swing.JPanel;
 
 import com.blu3flux.omnichess.OmniChessApplication;
 import com.blu3flux.omnichess.assets.ChessSet;
+import com.blu3flux.omnichess.chess.Bishop;
+import com.blu3flux.omnichess.chess.King;
+import com.blu3flux.omnichess.chess.Knight;
+import com.blu3flux.omnichess.chess.Pawn;
+import com.blu3flux.omnichess.chess.Piece;
+import com.blu3flux.omnichess.chess.Queen;
+import com.blu3flux.omnichess.chess.Rook;
 import com.blu3flux.omnichess.controls.ChessMouseControl;
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
 
@@ -22,12 +28,26 @@ public class ChessBoard extends JPanel{
 	
 	private ChessSet set;
 	
-	private BufferedImage wPawn, wKnight, wBishop, wRook, wQueen, wKing;
-	private BufferedImage bPawn, bKnight, bBishop, bRook, bQueen, bKing;
+	private Piece wPawn, wKnight, wBishop, wRook, wQueen, wKing;
+	private Piece bPawn, bKnight, bBishop, bRook, bQueen, bKing;
 	
 	public ChessBoard() {
 		mouse = new ChessMouseControl();
 		this.set = OmniChessApplication.getAssets().getSelectedChessSet();
+		
+		wPawn = new Pawn();
+		wKnight = new Knight();
+		wBishop = new Bishop();
+		wRook = new Rook();
+		wQueen = new Queen();
+		wKing = new King();
+		
+		bPawn = new Pawn();
+		bKnight = new Knight();
+		bBishop = new Bishop();
+		bRook = new Rook();
+		bQueen = new Queen();
+		bKing = new King();
 		
 		ByteArrayInputStream wPawnByteStream = new ByteArrayInputStream(set.getWPawnBytes());
 		ByteArrayInputStream wKnightByteStream = new ByteArrayInputStream(set.getWKnightBytes());
@@ -44,19 +64,19 @@ public class ChessBoard extends JPanel{
 		ByteArrayInputStream bKingByteStream = new ByteArrayInputStream(set.getBKingBytes());
 		
 		try {
-			wPawn = ImageIO.read(wPawnByteStream);
-			wKnight = ImageIO.read(wKnightByteStream);
-			wBishop = ImageIO.read(wBishopByteStream);
-			wRook = ImageIO.read(wRookByteStream);
-			wQueen = ImageIO.read(wQueenByteStream);
-			wKing = ImageIO.read(wKingByteStream);
+			wPawn.setImage(ImageIO.read(wPawnByteStream));
+			wKnight.setImage(ImageIO.read(wKnightByteStream));
+			wBishop.setImage(ImageIO.read(wBishopByteStream));
+			wRook.setImage(ImageIO.read(wRookByteStream));
+			wQueen.setImage(ImageIO.read(wQueenByteStream));
+			wKing.setImage(ImageIO.read(wKingByteStream));
 			
-			bPawn = ImageIO.read(bPawnByteStream);
-			bKnight = ImageIO.read(bKnightByteStream);
-			bBishop = ImageIO.read(bBishopByteStream);
-			bRook = ImageIO.read(bRookByteStream);
-			bQueen = ImageIO.read(bQueenByteStream);
-			bKing = ImageIO.read(bKingByteStream);
+			bPawn.setImage(ImageIO.read(bPawnByteStream));
+			bKnight.setImage(ImageIO.read(bKnightByteStream));
+			bBishop.setImage(ImageIO.read(bBishopByteStream));
+			bRook.setImage(ImageIO.read(bRookByteStream));
+			bQueen.setImage(ImageIO.read(bQueenByteStream));
+			bKing.setImage(ImageIO.read(bKingByteStream));
 			
 			wPawnByteStream.close();
 			wKnightByteStream.close();
@@ -112,43 +132,43 @@ public class ChessBoard extends JPanel{
 		int size = getWidth()/8;
 		
 		// 8th rank
-		g.drawImage(bRook, 0 * size, 0 * size, size, size, this);
-		g.drawImage(bKnight, 1 * size, 0 * size, size, size, this);
-		g.drawImage(bBishop, 2 * size, 0 * size, size, size, this);
-		g.drawImage(bQueen, 3 * size, 0 * size, size, size, this);
-		g.drawImage(bKing, 4 * size, 0 * size, size, size, this);
-		g.drawImage(bBishop, 5 * size, 0 * size, size, size, this);
-		g.drawImage(bKnight, 6 * size, 0 * size, size, size, this);
-		g.drawImage(bRook, 7 * size, 0 * size, size, size, this);
+		g.drawImage(bRook.getImage(), 0 * size, 0 * size, size, size, this);
+		g.drawImage(bKnight.getImage(), 1 * size, 0 * size, size, size, this);
+		g.drawImage(bBishop.getImage(), 2 * size, 0 * size, size, size, this);
+		g.drawImage(bQueen.getImage(), 3 * size, 0 * size, size, size, this);
+		g.drawImage(bKing.getImage(), 4 * size, 0 * size, size, size, this);
+		g.drawImage(bBishop.getImage(), 5 * size, 0 * size, size, size, this);
+		g.drawImage(bKnight.getImage(), 6 * size, 0 * size, size, size, this);
+		g.drawImage(bRook.getImage(), 7 * size, 0 * size, size, size, this);
 		
 		// 7th rank
-		g.drawImage(bPawn, 0 * size, 1 * size, size, size, this);
-		g.drawImage(bPawn, 1 * size, 1 * size, size, size, this);
-		g.drawImage(bPawn, 2 * size, 1 * size, size, size, this);
-		g.drawImage(bPawn, 3 * size, 1 * size, size, size, this);
-		g.drawImage(bPawn, 4 * size, 1 * size, size, size, this);
-		g.drawImage(bPawn, 5 * size, 1 * size, size, size, this);
-		g.drawImage(bPawn, 6 * size, 1 * size, size, size, this);
-		g.drawImage(bPawn, 7 * size, 1 * size, size, size, this);
+		g.drawImage(bPawn.getImage(), 0 * size, 1 * size, size, size, this);
+		g.drawImage(bPawn.getImage(), 1 * size, 1 * size, size, size, this);
+		g.drawImage(bPawn.getImage(), 2 * size, 1 * size, size, size, this);
+		g.drawImage(bPawn.getImage(), 3 * size, 1 * size, size, size, this);
+		g.drawImage(bPawn.getImage(), 4 * size, 1 * size, size, size, this);
+		g.drawImage(bPawn.getImage(), 5 * size, 1 * size, size, size, this);
+		g.drawImage(bPawn.getImage(), 6 * size, 1 * size, size, size, this);
+		g.drawImage(bPawn.getImage(), 7 * size, 1 * size, size, size, this);
 		
 		// 2nd rank
-		g.drawImage(wPawn, 0 * size, 6 * size, size, size, this);
-		g.drawImage(wPawn, 1 * size, 6 * size, size, size, this);
-		g.drawImage(wPawn, 2 * size, 6 * size, size, size, this);
-		g.drawImage(wPawn, 3 * size, 6 * size, size, size, this);
-		g.drawImage(wPawn, 4 * size, 6 * size, size, size, this);
-		g.drawImage(wPawn, 5 * size, 6 * size, size, size, this);
-		g.drawImage(wPawn, 6 * size, 6 * size, size, size, this);
-		g.drawImage(wPawn, 7 * size, 6 * size, size, size, this);
+		g.drawImage(wPawn.getImage(), 0 * size, 6 * size, size, size, this);
+		g.drawImage(wPawn.getImage(), 1 * size, 6 * size, size, size, this);
+		g.drawImage(wPawn.getImage(), 2 * size, 6 * size, size, size, this);
+		g.drawImage(wPawn.getImage(), 3 * size, 6 * size, size, size, this);
+		g.drawImage(wPawn.getImage(), 4 * size, 6 * size, size, size, this);
+		g.drawImage(wPawn.getImage(), 5 * size, 6 * size, size, size, this);
+		g.drawImage(wPawn.getImage(), 6 * size, 6 * size, size, size, this);
+		g.drawImage(wPawn.getImage(), 7 * size, 6 * size, size, size, this);
 		
 		// 1st rank
-		g.drawImage(wRook, 0 * size, 7 * size, size, size, this);
-		g.drawImage(wKnight, 1 * size, 7 * size, size, size, this);
-		g.drawImage(wBishop, 2 * size, 7 * size, size, size, this);
-		g.drawImage(wQueen, 3 * size, 7 * size, size, size, this);
-		g.drawImage(wKing, 4 * size, 7 * size, size, size, this);
-		g.drawImage(wBishop, 5 * size, 7 * size, size, size, this);
-		g.drawImage(wKnight, 6 * size, 7 * size, size, size, this);
-		g.drawImage(wRook, 7 * size, 7 * size, size, size, this);
+		g.drawImage(wRook.getImage(), 0 * size, 7 * size, size, size, this);
+		g.drawImage(wKnight.getImage(), 1 * size, 7 * size, size, size, this);
+		g.drawImage(wBishop.getImage(), 2 * size, 7 * size, size, size, this);
+		g.drawImage(wQueen.getImage(), 3 * size, 7 * size, size, size, this);
+		g.drawImage(wKing.getImage(), 4 * size, 7 * size, size, size, this);
+		g.drawImage(wBishop.getImage(), 5 * size, 7 * size, size, size, this);
+		g.drawImage(wKnight.getImage(), 6 * size, 7 * size, size, size, this);
+		g.drawImage(wRook.getImage(), 7 * size, 7 * size, size, size, this);
 	}
 }
