@@ -8,10 +8,13 @@ import java.awt.Insets;
 import javax.swing.JPanel;
 
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
+import com.blu3flux.omnichess.utils.ChessGameManager;
 
 public class PlayPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
+	
+	private ChessGameManager manager;
 	
 	private JPanel leftPanel;
 	private JPanel centerPanel;
@@ -24,6 +27,8 @@ public class PlayPanel extends JPanel{
 		
 		chessBoard = new ChessBoard();
 		moveList = new MoveList();
+		
+		manager = new ChessGameManager(chessBoard);
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
