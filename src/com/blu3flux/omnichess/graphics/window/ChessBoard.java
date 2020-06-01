@@ -11,11 +11,14 @@ import javax.swing.JPanel;
 
 import com.blu3flux.omnichess.OmniChessApplication;
 import com.blu3flux.omnichess.assets.ChessSet;
+import com.blu3flux.omnichess.controls.ChessMouseControl;
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
 
 public class ChessBoard extends JPanel{
 
 	private static final long serialVersionUID = 1L;
+	
+	private ChessMouseControl mouse;
 	
 	private ChessSet set;
 	
@@ -23,6 +26,7 @@ public class ChessBoard extends JPanel{
 	private BufferedImage bPawn, bKnight, bBishop, bRook, bQueen, bKing;
 	
 	public ChessBoard() {
+		mouse = new ChessMouseControl();
 		this.set = OmniChessApplication.getAssets().getSelectedChessSet();
 		
 		ByteArrayInputStream wPawnByteStream = new ByteArrayInputStream(set.getWPawnBytes());
@@ -70,6 +74,9 @@ public class ChessBoard extends JPanel{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 	}
 	
 	protected void paintComponent(Graphics g) {
