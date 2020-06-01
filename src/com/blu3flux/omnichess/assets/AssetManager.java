@@ -65,6 +65,6 @@ public class AssetManager {
 	}
 	
 	public ChessSet getSelectedChessSet() {
-		return chessSets.get(0);
+		return chessSets.get(1);
 	}
 }
