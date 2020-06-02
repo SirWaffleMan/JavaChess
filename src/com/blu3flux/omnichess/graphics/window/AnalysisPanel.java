@@ -8,10 +8,13 @@ import java.awt.Insets;
 import javax.swing.JPanel;
 
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
+import com.blu3flux.omnichess.utils.ChessGameManager;
 
 public class AnalysisPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
+	
+	ChessGameManager manager;
 	
 	private JPanel leftPanel;
 	private JPanel centerPanel;
@@ -40,6 +43,8 @@ public class AnalysisPanel extends JPanel{
 		chessBoard = new ChessBoard();
 		analysisExplorer = new AnalysisExplorer();
 		
+		manager = new ChessGameManager(chessBoard);
+		
 		leftPanel.add(evalBar);
 		centerPanel.add(chessBoard);
 		rightPanel.add(analysisExplorer);
@@ -57,6 +62,9 @@ public class AnalysisPanel extends JPanel{
 		gbc.gridx = 2;
 		gbc.gridy = 0;
 		add(rightPanel, gbc);
+		
+		String FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+		manager.setFEN(FEN);
 	}
 
 	public void resizeComponents(int width, int height) {
