@@ -11,10 +11,12 @@ import com.blu3flux.omnichess.graphics.window.ChessBoard;
 
 public class ChessGameManager {
 	
+	private PieceColor playerToMove;
 	private ChessBoard board;
 	
 	public ChessGameManager(ChessBoard cb) {
 		this.board = cb;
+		playerToMove = PieceColor.WHITE;
 	}
 	
 	public void setFEN(String fen) {
@@ -45,6 +47,10 @@ public class ChessGameManager {
 			rank++;
 		}
 		
+	}
+	
+	public PieceColor getPlayerToMove() {
+		return playerToMove;
 	}
 	
 	public void setPiece(char piece, int file, int rank) {
