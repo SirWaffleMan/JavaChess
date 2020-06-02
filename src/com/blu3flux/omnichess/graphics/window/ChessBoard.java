@@ -183,7 +183,6 @@ public class ChessBoard extends JPanel{
 			else
 				piece.setImage(bKing);
 		}
-		
 		pieces.add(piece);
 	}
 	
