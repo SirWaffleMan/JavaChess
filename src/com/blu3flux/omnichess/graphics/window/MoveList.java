@@ -20,7 +20,8 @@ public class MoveList extends JPanel{
 	public MoveList() {
 		 String[][] data = { 
 		            { "1.", "e4", "e5" }, 
-		            { "2.", "Nf3", "Nf6" } 
+		            { "2.", "Nf3", "Nc6" },
+		            { "3.", "Bc4", ""}
 		        }; 
 		table = new JTable(data, columnNames);
 		table.setEnabled(false);
