@@ -20,6 +20,14 @@ public class OmniChessApplication {
 		window = new Window(WIDTH, HEIGHT, TITLE, THEME);
 	}
 	
+	public void run() {
+		while(true) {
+			window.invalidate();
+			window.validate();
+			window.repaint();
+		}
+	}
+
 	public static AssetManager getAssets() {
 		return assetMan;
 	}

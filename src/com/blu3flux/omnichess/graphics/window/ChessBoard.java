@@ -32,12 +32,13 @@ public class ChessBoard extends JPanel{
 	private ChessSet set;
 	
 	private ArrayList<Piece> pieces;
+	private Piece selectedPiece;
 	
 	private BufferedImage wPawn, wKnight, wBishop, wRook, wQueen, wKing;
 	private BufferedImage bPawn, bKnight, bBishop, bRook, bQueen, bKing;
 	
 	public ChessBoard() {
-		mouse = new ChessMouseControl();
+		mouse = new ChessMouseControl(this);
 		pieces = new ArrayList<Piece>();
 		this.set = OmniChessApplication.getAssets().getSelectedChessSet();
 		
@@ -128,6 +129,15 @@ public class ChessBoard extends JPanel{
 		int size = getWidth()/8;
 		
 		for(Piece piece : pieces) {
+			
+			if(piece == selectedPiece) {
+				g.drawImage(piece.getImage(),
+						piece.getX(),
+						piece.getY(),
+						size, size, this);
+				continue;
+			}
+			
 			g.drawImage(piece.getImage(),
 						piece.getFile() * size,
 						piece.getRank() * size,
@@ -175,5 +185,26 @@ public class ChessBoard extends JPanel{
 		}
 		
 		pieces.add(piece);
+	}
+	
+	public void removeSelectedPiece() {
+		selectedPiece = null;
+	}
+
+	public void setSelectedPiece(Piece p) {
+		selectedPiece = p;
+	}
+
+	public Piece getPiece(int file, int rank) {
+		for(Piece p : pieces) {
+			if(p.getFile() == file && p.getRank() == rank) {
+				return p;
+			}
+		}
+		return null;
+	}
+
+	public Piece getSelectedPiece() {
+		return selectedPiece;
 	}
 }
