@@ -130,19 +130,20 @@ public class ChessBoard extends JPanel{
 		
 		for(Piece piece : pieces) {
 			
-			if(piece == selectedPiece) {
-				g.drawImage(piece.getImage(),
-						piece.getX(),
-						piece.getY(),
-						size, size, this);
+			if(piece == selectedPiece)
 				continue;
-			}
 			
 			g.drawImage(piece.getImage(),
 						piece.getFile() * size,
 						piece.getRank() * size,
 						size, size, this);
 		}
+		
+		if(selectedPiece != null)
+			g.drawImage(selectedPiece.getImage(),
+					selectedPiece.getX(),
+					selectedPiece.getY(),
+					size, size, this);
 	}
 
 	public void addPiece(Piece piece) {
@@ -205,5 +206,14 @@ public class ChessBoard extends JPanel{
 
 	public Piece getSelectedPiece() {
 		return selectedPiece;
+	}
+
+	public boolean isPiece(int file, int rank) {
+		for(Piece p : pieces) {
+			if(p.getFile() == file && p.getRank() == rank) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

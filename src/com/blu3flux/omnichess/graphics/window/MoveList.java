@@ -15,15 +15,9 @@ public class MoveList extends JPanel{
 	
 	private JScrollPane scrollPane; 
 	private JTable table;
-	String[] columnNames = { "Move", "White", "Black" }; 
 
 	public MoveList() {
-		 String[][] data = { 
-		            { "1.", "e4", "e5" }, 
-		            { "2.", "Nf3", "Nc6" },
-		            { "3.", "Bc4", ""}
-		        }; 
-		table = new JTable(data, columnNames);
+		table = new JTable();
 		table.setEnabled(false);
 		table.setRowHeight(30);
 		table.setForeground(ThemeManager.getInstance().getFontColor());

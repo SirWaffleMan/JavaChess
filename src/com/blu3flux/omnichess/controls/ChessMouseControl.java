@@ -1,5 +1,6 @@
 package com.blu3flux.omnichess.controls;
 
+import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -70,6 +71,13 @@ public class ChessMouseControl extends MouseAdapter{
 	
 	@Override
 	public void mouseMoved(MouseEvent e) {
+		int file = (int)((float)e.getX() / (float)board.getWidth() * 8);
+		int rank = (int)((float)e.getY() / (float)board.getHeight() * 8);
 		
+		if(board.isPiece(file, rank)) {
+			board.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		}else {
+			board.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		}
 	}
 }

@@ -59,7 +59,7 @@ public class PlayPanel extends JPanel{
 		gbc.gridy = 0;
 		add(rightPanel, gbc);
 		
-		String FEN = "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3";
+		String FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 		manager.setFEN(FEN);
 	}
 	
