@@ -44,6 +44,7 @@ public class Window extends JFrame implements ComponentListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setContentPane(tabPanel);
 		pack();
+		setLocationRelativeTo(null);
 		setVisible(true);
 		addComponentListener(this);
 	}
