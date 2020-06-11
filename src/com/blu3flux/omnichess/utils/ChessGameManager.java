@@ -4,6 +4,7 @@ import com.blu3flux.omnichess.chess.Bishop;
 import com.blu3flux.omnichess.chess.King;
 import com.blu3flux.omnichess.chess.Knight;
 import com.blu3flux.omnichess.chess.Pawn;
+import com.blu3flux.omnichess.chess.Piece;
 import com.blu3flux.omnichess.chess.PieceColor;
 import com.blu3flux.omnichess.chess.Queen;
 import com.blu3flux.omnichess.chess.Rook;
@@ -98,5 +99,10 @@ public class ChessGameManager {
 			board.addPiece(new King(PieceColor.BLACK, file, rank));
 			break;
 		}
+	}
+
+	public void handleMove(Piece selectedPiece, int file, int rank) {
+		selectedPiece.setRank(rank);
+		selectedPiece.setFile(file);
 	}
 }

@@ -45,8 +45,7 @@ public class ChessMouseControl extends MouseAdapter{
 		int rank = (int)((float)e.getY() / (float)board.getHeight() * 8);
 		
 		if(selectedPiece != null) {
-			selectedPiece.setRank(rank);
-			selectedPiece.setFile(file);
+			manager.handleMove(selectedPiece, file, rank);
 		}
 		
 		selectedPiece = null;
