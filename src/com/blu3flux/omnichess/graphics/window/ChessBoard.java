@@ -22,11 +22,13 @@ import com.blu3flux.omnichess.chess.Queen;
 import com.blu3flux.omnichess.chess.Rook;
 import com.blu3flux.omnichess.controls.ChessMouseControl;
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
+import com.blu3flux.omnichess.utils.ChessGameManager;
 
 public class ChessBoard extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
+	private ChessGameManager manager;
 	private ChessMouseControl mouse;
 	
 	private ChessSet set;
@@ -38,6 +40,7 @@ public class ChessBoard extends JPanel{
 	private BufferedImage bPawn, bKnight, bBishop, bRook, bQueen, bKing;
 	
 	public ChessBoard() {
+		manager = new ChessGameManager(this);
 		mouse = new ChessMouseControl(this);
 		pieces = new ArrayList<Piece>();
 		this.set = OmniChessApplication.getAssets().getSelectedChessSet();
@@ -90,6 +93,9 @@ public class ChessBoard extends JPanel{
 		
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
+		
+		String FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+		manager.setFEN(FEN);
 	}
 	
 	protected void paintComponent(Graphics g) {

@@ -11,6 +11,7 @@ import com.blu3flux.omnichess.graphics.window.ChessBoard;
 
 public class ChessGameManager {
 	
+	private String FEN;
 	private PieceColor playerToMove;
 	private ChessBoard board;
 	
@@ -20,6 +21,7 @@ public class ChessGameManager {
 	}
 	
 	public void setFEN(String fen) {
+		this.FEN = fen;
 		String pieceLocations = fen.split(" ")[0];
 		String [] rows = pieceLocations.split("/");
 		
