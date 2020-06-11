@@ -95,7 +95,7 @@ public class ChessBoard extends JPanel{
 		addMouseMotionListener(mouse);
 		
 		String FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-		manager.setFEN(FEN);
+		manager.setBoard(FEN);
 	}
 	
 	protected void paintComponent(Graphics g) {

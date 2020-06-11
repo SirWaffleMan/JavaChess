@@ -64,7 +64,7 @@ public class AnalysisPanel extends JPanel{
 		add(rightPanel, gbc);
 		
 		String FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-		manager.setFEN(FEN);
+		manager.setBoard(FEN);
 	}
 
 	public void resizeComponents(int width, int height) {

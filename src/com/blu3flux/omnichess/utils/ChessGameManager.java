@@ -23,7 +23,7 @@ public class ChessGameManager {
 		validator = new ChessGameValidator();
 	}
 	
-	public void setFEN(String fen) {
+	public void setBoard(String fen) {
 		this.FEN = fen;
 		String pieceLocations = fen.split(" ")[0];
 		String [] rows = pieceLocations.split("/");
