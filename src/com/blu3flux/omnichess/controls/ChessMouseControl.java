@@ -6,15 +6,18 @@ import java.awt.event.MouseEvent;
 
 import com.blu3flux.omnichess.chess.Piece;
 import com.blu3flux.omnichess.graphics.window.ChessBoard;
+import com.blu3flux.omnichess.utils.ChessGameManager;
 
 public class ChessMouseControl extends MouseAdapter{
 	
+	ChessGameManager manager;
 	ChessBoard board;
 	
 	Piece selectedPiece;
 	
-	public ChessMouseControl(ChessBoard b) {
-		this.board = b;
+	public ChessMouseControl(ChessGameManager m) {
+		this.manager = m;
+		this.board = manager.getBoard();
 	}
 	
 	@Override

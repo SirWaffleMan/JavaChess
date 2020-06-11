@@ -41,7 +41,7 @@ public class ChessBoard extends JPanel{
 	
 	public ChessBoard() {
 		manager = new ChessGameManager(this);
-		mouse = new ChessMouseControl(this);
+		mouse = new ChessMouseControl(manager);
 		pieces = new ArrayList<Piece>();
 		this.set = OmniChessApplication.getAssets().getSelectedChessSet();
 		

@@ -55,6 +55,10 @@ public class ChessGameManager {
 		return playerToMove;
 	}
 	
+	public ChessBoard getBoard() {
+		return board;
+	}
+	
 	public void setPiece(char piece, int file, int rank) {
 		switch(piece) {
 		case 'P':
