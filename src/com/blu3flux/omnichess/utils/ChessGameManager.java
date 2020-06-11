@@ -15,10 +15,12 @@ public class ChessGameManager {
 	private String FEN;
 	private PieceColor playerToMove;
 	private ChessBoard board;
+	private ChessGameValidator validator;
 	
 	public ChessGameManager(ChessBoard cb) {
 		this.board = cb;
 		playerToMove = PieceColor.WHITE;
+		validator = new ChessGameValidator();
 	}
 	
 	public void setFEN(String fen) {
