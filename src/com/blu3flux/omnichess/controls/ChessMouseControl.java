@@ -30,6 +30,7 @@ public class ChessMouseControl extends MouseAdapter{
 		board.setSelectedPiece(selectedPiece);
 		
 		if(selectedPiece != null) {
+			selectedPiece.saveLocation();
 			int x = e.getX() - board.getWidth()/16;
 			int y = e.getY() - board.getHeight()/16;
 			selectedPiece.setX(x);

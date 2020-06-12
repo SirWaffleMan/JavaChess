@@ -10,8 +10,14 @@ public abstract class Piece {
 	private int rank;
 	private PieceColor color;
 	
+	// These coordinates are only used if piece
+	// is selected piece
 	private int x;
 	private int y;
+	
+	// Used to restore previous location
+	private int saved_file;
+	private int saved_rank;
 	
 	public Piece(PieceColor c, int f, int r) {
 		this.color = c;
@@ -61,6 +67,16 @@ public abstract class Piece {
 	
 	public int getY() {
 		return y;
+	}
+	
+	public void saveLocation() {
+		this.saved_file = file;
+		this.saved_rank = rank;
+	}
+	
+	public void restoreLocation() {
+		this.file = this.saved_file;
+		this.rank = this.saved_rank;
 	}
 	
 }

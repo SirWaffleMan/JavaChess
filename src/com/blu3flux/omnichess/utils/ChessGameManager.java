@@ -117,7 +117,7 @@ public class ChessGameManager {
 			selectedPiece.setRank(rank);
 			selectedPiece.setFile(file);
 		}else {
-			//TODO: move selected piece to original location
+			selectedPiece.restoreLocation();
 		}
 		
 	}
