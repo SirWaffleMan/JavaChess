@@ -94,6 +94,7 @@ public class ChessBoard extends JPanel{
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
 		
+		// Starting position of chess board
 		String FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 		manager.setBoard(FEN);
 	}
@@ -152,6 +153,7 @@ public class ChessBoard extends JPanel{
 					size, size, this);
 	}
 
+	// Adds image to piece, then adds the piece to list
 	public void addPiece(Piece piece) {
 		
 		if(piece instanceof Pawn) {
@@ -201,6 +203,7 @@ public class ChessBoard extends JPanel{
 		selectedPiece = p;
 	}
 
+	// Returns piece in selected file and rank
 	public Piece getPiece(int file, int rank) {
 		for(Piece p : pieces) {
 			if(p.getFile() == file && p.getRank() == rank) {
@@ -214,6 +217,7 @@ public class ChessBoard extends JPanel{
 		return selectedPiece;
 	}
 
+	// Checks if there is a piece in file and rank
 	public boolean isPiece(int file, int rank) {
 		for(Piece p : pieces) {
 			if(p.getFile() == file && p.getRank() == rank) {
