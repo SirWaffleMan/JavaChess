@@ -104,7 +104,21 @@ public class ChessGameManager {
 	}
 
 	public void handleMove(Piece selectedPiece, int file, int rank) {
-		selectedPiece.setRank(rank);
-		selectedPiece.setFile(file);
+		
+		String piece = "";
+		String coor = "";
+		
+		//TODO: Figure out piece and coordinate
+		
+		coor = String.valueOf((char)('a'+ rank));
+		coor += rank;
+		
+		if(validator.checkValidMove(FEN, piece+coor)) {
+			selectedPiece.setRank(rank);
+			selectedPiece.setFile(file);
+		}else {
+			//TODO: move selected piece to original location
+		}
+		
 	}
 }
