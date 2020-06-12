@@ -105,13 +105,11 @@ public class ChessGameManager {
 
 	public void handleMove(Piece selectedPiece, int file, int rank) {
 		
-		String piece = "";
-		String coor = "";
+		String piece = selectedPiece.getLetter();
+		String coor = String.valueOf((char)('a'+file)) + String.valueOf(8 - rank);
 		
-		//TODO: Figure out piece and coordinate
-		
-		coor = String.valueOf((char)('a'+ rank));
-		coor += rank;
+		//TODO: Figure out coordinate notation if
+		// equal pieces are in the same rank or file
 		
 		if(validator.checkValidMove(FEN, piece+coor)) {
 			selectedPiece.setRank(rank);

@@ -78,6 +78,10 @@ public abstract class Piece {
 		this.saved_rank = rank;
 	}
 	
+	public String getLetter(){
+		return letter;
+	}
+	
 	public void restoreLocation() {
 		this.file = this.saved_file;
 		this.rank = this.saved_rank;
