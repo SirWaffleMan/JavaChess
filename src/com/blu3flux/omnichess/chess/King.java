@@ -4,6 +4,7 @@ public class King extends Piece {
 
 	public King(PieceColor c, int f, int r) {
 		super(c, f, r);
+		this.letter = "K";
 	}
 
 }

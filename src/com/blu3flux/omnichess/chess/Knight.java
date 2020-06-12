@@ -4,6 +4,7 @@ public class Knight extends Piece {
 
 	public Knight(PieceColor c, int f, int r) {
 		super(c, f, r);
+		this.letter = "N";
 	}
 
 }

@@ -10,6 +10,10 @@ public abstract class Piece {
 	private int rank;
 	private PieceColor color;
 	
+	// Keeps track of piece letter
+	// Ex: Pawn: "P", Bishop: "B", etc.
+	protected String letter;
+	
 	// These coordinates are only used if piece
 	// is selected piece
 	private int x;
