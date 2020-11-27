@@ -7,5 +7,10 @@ public class Queen extends Piece {
 		this.letter = "Q";
 	}
 
+	public Queen(PieceColor c){
+		super(c);
+		this.letter = "Q";
+	}
+
 
 }

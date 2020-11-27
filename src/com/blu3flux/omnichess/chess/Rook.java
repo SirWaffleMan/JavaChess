@@ -7,5 +7,10 @@ public class Rook extends Piece {
 		this.letter = "R";
 	}
 
+	public Rook(PieceColor c) {
+		super(c);
+		this.letter = "R";
+	}
+
 
 }

@@ -7,5 +7,10 @@ public class Bishop extends Piece {
 		this.letter = "B";
 	}
 
+	public Bishop(PieceColor c) {
+		super(c);
+		this.letter = "B";
+	}
+
 
 }

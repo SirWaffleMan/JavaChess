@@ -7,4 +7,9 @@ public class Knight extends Piece {
 		this.letter = "N";
 	}
 
+	public Knight(PieceColor c) {
+		super(c);
+		this.letter = "N";
+	}
+
 }

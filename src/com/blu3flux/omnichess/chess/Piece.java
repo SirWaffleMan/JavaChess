@@ -28,6 +28,10 @@ public abstract class Piece {
 		this.file = f;
 		this.rank = r;
 	}
+
+	public Piece(PieceColor c){
+		this.color = c;
+	}
 	
 	public void setImage(BufferedImage img) {
 		this.image = img;

@@ -7,5 +7,10 @@ public class Pawn extends Piece {
 		letter = "";
 	}
 
+	public Pawn(PieceColor c) {
+		super(c);
+		letter = "";
+	}
+
 
 }
