@@ -43,6 +43,94 @@ public class ChessGame {
 
     }
 
+    // Moves are in Long Algebraic Notation
+    public boolean move(String move){
+
+        //TODO: Check valid chess move notation
+
+        String[] parsedMove = parseMove(move);
+        String str_piece = parsedMove[0];
+        String str_source = parsedMove[1];
+        String str_dest = parsedMove[2];
+
+
+        // check if piece exists
+        Piece piece = getPiece(str_piece);
+        if(piece == null)
+            return false;
+
+        // Check if player "owns" piece
+        if(piece.getColor() != playerToMove)
+            return false;
+
+        // Check if player already has piece in destination
+        Piece destination = getPiece(str_dest);
+        if(destination != null && destination.getColor() != playerToMove)
+            return false;
+
+        //TODO: Check if piece can move to destination
+        makeMove(parsedMove);
+
+        return true;
+    }
+
+    private void makeMove(String [] move){
+        Piece piece = getPiece(move[0]);
+        int src_rank = getRankIndex(move[1]);
+        int src_file = getFileIndex(move[1]);
+        int dest_rank = getRankIndex(move[2]);
+        int dest_file = getFileIndex(move[2]);
+
+        // Place piece in destination
+        this.board[dest_rank][dest_file] = piece;
+
+        // remove old location
+        this.board[src_rank][src_file] = null;
+    }
+
+    // Returns the parsed move (piece, source, destination)
+    private String[] parseMove(String move){
+        char [] minorMajorPieces = new char[]{'K', 'Q', 'R', 'B', 'N'};
+        String[] parsedMove = new String[3];
+
+        // Get piece
+        for(char minorMajorPiece : minorMajorPieces){
+            if(move.charAt(0) == minorMajorPiece)
+                parsedMove[0] = String.valueOf(minorMajorPiece);
+        }
+        if(parsedMove[0] == null){
+            parsedMove[0] = "";
+        }
+
+        // Get source
+        parsedMove[1] = move.substring(1, 2);
+
+        // get destination
+        parsedMove[2] = move.substring(3, 4);
+
+        return parsedMove;
+    }
+
+    private Piece getPiece(String coordinate){
+        if(coordinate.length() != 2)
+            return null;
+
+        int fileIndex = getFileIndex(coordinate);
+        int rankIndex = getRankIndex(coordinate);
+
+        return this.board[rankIndex][fileIndex];
+    }
+
+    private int getFileIndex(String coordinate){
+        char file = coordinate.charAt(0);
+        return (int)(file - 'a');
+    }
+
+    private int getRankIndex(String coordinate){
+        char rank = coordinate.charAt(1);
+        return 7 - Character.getNumericValue(rank) - 1;
+    }
+
     private void placeChessPieces(String piecePlacement){
         this.board = new Piece[8][8];
 

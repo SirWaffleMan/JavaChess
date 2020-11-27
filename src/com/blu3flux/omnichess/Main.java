@@ -6,5 +6,4 @@ public class Main {
 		OmniChessApplication app = new OmniChessApplication();
 		app.run();
 	}
-
 }
