@@ -7,14 +7,12 @@ import java.awt.Insets;
 
 import javax.swing.JPanel;
 
+import com.blu3flux.omnichess.chess.Piece;
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
-import com.blu3flux.omnichess.utils.ChessGameManager;
 
-public class AnalysisPanel extends JPanel{
+public class AnalysisPanel extends JPanel implements Chessable{
 
 	private static final long serialVersionUID = 1L;
-	
-	ChessGameManager manager;
 	
 	private JPanel leftPanel;
 	private JPanel centerPanel;
@@ -40,10 +38,9 @@ public class AnalysisPanel extends JPanel{
 		rightPanel.setBackground(ThemeManager.getInstance().getSecondaryColor());
 		
 		evalBar = new EvaluationBar();
-		chessBoard = new ChessBoard();
+		chessBoard = new ChessBoard(this);
 		analysisExplorer = new AnalysisExplorer();
-		
-		manager = new ChessGameManager(chessBoard);
+
 		
 		leftPanel.add(evalBar);
 		centerPanel.add(chessBoard);
@@ -62,9 +59,6 @@ public class AnalysisPanel extends JPanel{
 		gbc.gridx = 2;
 		gbc.gridy = 0;
 		add(rightPanel, gbc);
-		
-		String FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-		manager.setBoard(FEN);
 	}
 
 	public void resizeComponents(int width, int height) {
@@ -98,5 +92,15 @@ public class AnalysisPanel extends JPanel{
 		analysisExplorer.invalidate();
 		analysisExplorer.validate();
 		analysisExplorer.repaint();
+	}
+
+	@Override
+	public void handleMove(String move) {
+		this.chessGame.move(move);
+	}
+
+	@Override
+	public Piece[][] getPiecePlacement() {
+		return this.chessGame.getBoard();
 	}
 }

@@ -12,37 +12,27 @@ import javax.swing.JPanel;
 
 import com.blu3flux.omnichess.OmniChessApplication;
 import com.blu3flux.omnichess.assets.ChessSet;
-import com.blu3flux.omnichess.chess.Bishop;
-import com.blu3flux.omnichess.chess.King;
-import com.blu3flux.omnichess.chess.Knight;
-import com.blu3flux.omnichess.chess.Pawn;
-import com.blu3flux.omnichess.chess.Piece;
-import com.blu3flux.omnichess.chess.PieceColor;
-import com.blu3flux.omnichess.chess.Queen;
-import com.blu3flux.omnichess.chess.Rook;
-import com.blu3flux.omnichess.controls.ChessMouseControl;
+import com.blu3flux.omnichess.chess.*;
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
-import com.blu3flux.omnichess.utils.ChessGameManager;
+import com.blu3flux.omnichess.controls.ChessMouseControl;
 
 public class ChessBoard extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	
-	private ChessGameManager manager;
+
+	private Chessable gameManager;
+
 	private ChessMouseControl mouse;
 	
 	private ChessSet set;
 	
-	private ArrayList<Piece> pieces;
-	private Piece selectedPiece;
-	
 	private BufferedImage wPawn, wKnight, wBishop, wRook, wQueen, wKing;
 	private BufferedImage bPawn, bKnight, bBishop, bRook, bQueen, bKing;
 	
-	public ChessBoard() {
-		manager = new ChessGameManager(this);
-		mouse = new ChessMouseControl(manager);
-		pieces = new ArrayList<Piece>();
+	public ChessBoard(Chessable manager) {
+
+		this.gameManager = manager;
+		mouse = new ChessMouseControl(this);
 		this.set = OmniChessApplication.getAssets().getSelectedChessSet();
 		
 		ByteArrayInputStream wPawnByteStream = new ByteArrayInputStream(set.getWPawnBytes());
@@ -90,13 +80,11 @@ public class ChessBoard extends JPanel{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		addImages();
 		
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
-		
-		// Starting position of chess board
-		String FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-		manager.setBoard(FEN);
 	}
 	
 	protected void paintComponent(Graphics g) {
@@ -127,103 +115,81 @@ public class ChessBoard extends JPanel{
 		
 	}
 	
-	public void clearPieces() {
-		pieces.clear();
-	}
-	
 	private void drawChessPieces(Graphics g) {
-		
-		int size = getWidth()/8;
-		
-		for(Piece piece : pieces) {
-			
-			if(piece == selectedPiece)
-				continue;
-			
-			g.drawImage(piece.getImage(),
-						piece.getFile() * size,
-						piece.getRank() * size,
-						size, size, this);
-		}
-		
-		if(selectedPiece != null)
-			g.drawImage(selectedPiece.getImage(),
-					selectedPiece.getX(),
-					selectedPiece.getY(),
-					size, size, this);
-	}
 
-	// Adds image to piece, then adds the piece to list
-	public void addPiece(Piece piece) {
-		
-		if(piece instanceof Pawn) {
-			if(piece.getColor() == PieceColor.WHITE)
-				piece.setImage(wPawn);
-			else
-				piece.setImage(bPawn);
-		}
-		else if(piece instanceof Knight) {
-			if(piece.getColor() == PieceColor.WHITE)
-				piece.setImage(wKnight);
-			else
-				piece.setImage(bKnight);
-		}
-		else if(piece instanceof Bishop) {
-			if(piece.getColor() == PieceColor.WHITE)
-				piece.setImage(wBishop);
-			else
-				piece.setImage(bBishop);
-		}
-		else if(piece instanceof Rook) {
-			if(piece.getColor() == PieceColor.WHITE)
-				piece.setImage(wRook);
-			else
-				piece.setImage(bRook);
-		}
-		else if(piece instanceof Queen) {
-			if(piece.getColor() == PieceColor.WHITE)
-				piece.setImage(wQueen);
-			else
-				piece.setImage(bQueen);
-		}
-		else if(piece instanceof King) {
-			if(piece.getColor() == PieceColor.WHITE)
-				piece.setImage(wKing);
-			else
-				piece.setImage(bKing);
-		}
-		pieces.add(piece);
-	}
-	
-	public void removeSelectedPiece() {
-		selectedPiece = null;
-	}
+		int size = getWidth() / 8;
 
-	public void setSelectedPiece(Piece p) {
-		selectedPiece = p;
-	}
+		Piece[][] board = gameManager.getPiecePlacement();
 
-	// Returns piece in selected file and rank
-	public Piece getPiece(int file, int rank) {
-		for(Piece p : pieces) {
-			if(p.getFile() == file && p.getRank() == rank) {
-				return p;
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+
+				Piece piece = board[i][j];
+
+				// Skip if empty square
+				if(piece == null)
+					continue;
+
+				g.drawImage(piece.getImage(),j * size, i*size, size, size, this);
 			}
 		}
-		return null;
 	}
 
-	public Piece getSelectedPiece() {
-		return selectedPiece;
-	}
+	private void addImages(){
 
-	// Checks if there is a piece in file and rank
-	public boolean isPiece(int file, int rank) {
-		for(Piece p : pieces) {
-			if(p.getFile() == file && p.getRank() == rank) {
-				return true;
+		Piece[][] board = gameManager.getPiecePlacement();
+
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+				Piece piece = board[i][j];
+
+				if(piece == null)
+					continue;
+
+				if(piece instanceof Pawn){
+					if(piece.getColor() == PieceColor.WHITE){
+						piece.setImage(wPawn);
+					}else{
+						piece.setImage(bPawn);
+					}
+				}
+				else if(piece instanceof Knight){
+					if(piece.getColor() == PieceColor.WHITE){
+						piece.setImage(wKnight);
+					}else{
+						piece.setImage(bKnight);
+					}
+				}
+				else if(piece instanceof Bishop){
+					if(piece.getColor() == PieceColor.WHITE){
+						piece.setImage(wBishop);
+					}else{
+						piece.setImage(bBishop);
+					}
+				}
+				else if(piece instanceof Rook){
+					if(piece.getColor() == PieceColor.WHITE){
+						piece.setImage(wRook);
+					}else{
+						piece.setImage(bRook);
+					}
+				}
+				else if(piece instanceof Queen){
+					if(piece.getColor() == PieceColor.WHITE){
+						piece.setImage(wQueen);
+					}else{
+						piece.setImage(bQueen);
+					}
+				}
+				else if(piece instanceof King){
+					if(piece.getColor() == PieceColor.WHITE){
+						piece.setImage(wKing);
+					}else{
+						piece.setImage(bKing);
+					}
+				}
+
 			}
 		}
-		return false;
 	}
 }

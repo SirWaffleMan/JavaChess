@@ -128,7 +128,7 @@ public class ChessGame {
 
     private int getRankIndex(String coordinate){
         char rank = coordinate.charAt(1);
-        return 7 - Character.getNumericValue(rank) - 1;
+        return 7 - Character.getNumericValue(rank);
     }
 
     private void placeChessPieces(String piecePlacement){
@@ -188,6 +188,19 @@ public class ChessGame {
                 }
 
             }
+        }
+    }
+
+    public Piece[][] getBoard(){
+        return this.board;
+    }
+
+    public void printBoard(){
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[i].length; j++){
+                System.out.print(board[i][j]);
+            }
+            System.out.println();
         }
     }
 

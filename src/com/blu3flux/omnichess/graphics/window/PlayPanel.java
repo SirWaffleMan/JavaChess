@@ -7,22 +7,24 @@ import java.awt.Insets;
 
 import javax.swing.JPanel;
 
+import com.blu3flux.omnichess.chess.ChessGame;
+import com.blu3flux.omnichess.chess.Piece;
 import com.blu3flux.omnichess.graphics.theme.ThemeManager;
 
-public class PlayPanel extends JPanel{
+public class PlayPanel extends JPanel implements Chessable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel leftPanel;
 	private JPanel centerPanel;
 	private JPanel rightPanel;
-	
-	private ChessBoard chessBoard;
+
 	private MoveList moveList;
+
+	private ChessBoard chessBoard;
 	
 	public PlayPanel() {
-		
-		chessBoard = new ChessBoard();
+		chessBoard = new ChessBoard(this);
 		moveList = new MoveList();
 		
 		setLayout(new GridBagLayout());
@@ -55,8 +57,7 @@ public class PlayPanel extends JPanel{
 		add(rightPanel, gbc);
 	}
 	
-public void resizeComponents(int width, int height) {
-		
+	public void resizeComponents(int width, int height) {
 		if(width >= 1300 && width >= 920) {
 			chessBoard.setPreferredSize(new Dimension(800, 800));
 			moveList.setSize(new Dimension(300, 800));
@@ -70,14 +71,23 @@ public void resizeComponents(int width, int height) {
 			chessBoard.setPreferredSize(new Dimension(200, 200));
 			moveList.setSize(new Dimension(300, 200));
 		}
-	
+
 		chessBoard.invalidate();
 		chessBoard.validate();
 		chessBoard.repaint();
-		
+
 		moveList.invalidate();
 		moveList.validate();
 		moveList.repaint();
 	}
 
+	@Override
+	public void handleMove(String move) {
+		chessGame.move(move);
+	}
+
+	@Override
+	public Piece[][] getPiecePlacement() {
+		return chessGame.getBoard();
+	}
 }
